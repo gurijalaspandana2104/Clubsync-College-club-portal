@@ -42,8 +42,3 @@ It enables club coordinators to create events, manage registrations, and track v
 
 ---
 
-## ⚙️ Installation and Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/clubsync.git
