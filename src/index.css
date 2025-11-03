@@ -1,13 +1,1025 @@
-body {
+/* === Reset and Global === */
+/* === Reset and Global === */
+/* === Reset and Global === */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fef6fb, #e4f0ff);
+  color: #333;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* === Navbar === */
+.navbar {
+  background: linear-gradient(90deg, #8a2be2, #da70d6);
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between; /* This keeps the navbar title and links apart */
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(155, 11, 207, 0.15);
+  animation: slideDown 0.6s ease-out;
+  border-radius: 0 0 20px 20px;
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+.navbar-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222020;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === Navbar Links === */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem; /* This ensures the links have spacing between them */
+  align-items: center;
+  justify-content: space-between;
+  width: 60%; /* Adjust width to control how much space links take */
+}
+
+.navbar-links a {
+  color: rgb(14, 13, 13);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.25rem;
+  position: relative;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+.navbar-links a:hover {
+  color: #dfd3d3;
+  letter-spacing: 0.5px;
+}
+
+/* Navbar slide down animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* === Home Page === */
+.home-container {
+  padding: 4rem 2rem;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.hero-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #6a0dad;
+  margin-bottom: 2.5rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* === Card Grid === */
+.club-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+  min-height: 80vh;  /* Ensure the content fills the screen */
+}
+
+/* === ClubCard === */
+.club-card {
+  background: #220628;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.club-card:hover {
+  transform: scale(1.05);
+}
+
+.club-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.club-info {
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.club-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #6a0dad;
+}
+
+/* === Recurse Club Page === */
+.recurse-club-container {
+  padding: 4rem 2rem;
+  background-color: #f8f8f8;
+}
+
+.recurse-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color:purple;
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.event-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in;
+}
+
+.event-name {
+  font-size: 1.6rem;
+  color: purple;
+  margin-bottom: 0.5rem;
+}
+
+.event-date {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.register-btn,
+.volunteer-btn {
+  background: #6a0dad;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-btn:hover,
+.volunteer-btn:hover {
+  background: #530095;
+}
+
+.registered-msg,
+.volunteered-msg {
+  color: green;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Clubs Page Styling === */
+.clubs-page {
+  background-color: #f8f3ff; /* Light purple background */
+  padding: 4rem 2rem;
+  min-height: 100vh;
+}
+
+.clubs-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #6a0dad; /* Purple color */
+  margin-bottom: 2rem;
+}
+
+/* Grid setup for clubs */
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
+  gap: 2rem;
+  padding: 2rem;
+}
+
+/* Club Card Styling */
+.club-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.club-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(128, 0, 128, 0.5); /* Purple shadow on hover */
+}
+
+.club-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.club-info {
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.club-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #6a0dad; /* Purple color for text */
+  transition: color 0.3s ease;
+}
+
+.club-name:hover {
+  color: #530095; /* Dark purple on hover */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .clubs-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .clubs-grid {
+    grid-template-columns: 1fr; /* 1 column for smaller screens */
+  }
+}
+/* === Base Styles === */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9f0ff, #e8d6ff);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(138, 43, 226, 0.15);
+  width: 100%;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-5px);
+}
+
+.auth-title {
+  color: #8a2be2;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* === Input Fields === */
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 16px 12px 40px;
+  border: 2px solid #e2d4ff;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-input:focus {
+  border-color: #8a2be2;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+  outline: none;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a2be2;
+}
+
+/* === Select Dropdown === */
+.auth-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e2d4ff;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  font-size: 1rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* === Button === */
+.auth-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #8a2be2, #9b59ff);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.auth-button:hover {
+  background: linear-gradient(90deg, #7b1fa2, #8e44ad);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+/* === Toggle Text === */
+.auth-toggle {
+  color: #666;
+  text-align: center;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.auth-toggle:hover {
+  color: #8a2be2;
+  text-decoration: underline;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.5rem;
+  }
+  
+  .auth-title {
+    font-size: 1.5rem;
+  }
+}
+.contact-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.info-section {
+  width: 30%;
+}
+
+.info-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.info-section p {
+  color: #555;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #800080;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.chatbot-btn:hover {
+  background-color: #800080;
+}
+
+.chatbot-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.chatbot-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #800080;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.chatbot-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.chatbot-box-body {
+  padding: 15px;
+}
+
+.chatbot-box-body input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chatbot-box-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.chatbot-box-footer button {
+  padding: 8px 16px;
+  background-color:#800080;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chatbot-box-footer button:hover {
+  background-color: #800080;
+}
+.social-icon {
+  font-size: 40px; /* Increased size for bigger icons */
+  color: black; /* Set icon color to black */
+  margin: 0 15px; /* Adjust space between icons */
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #0073e6; /* Hover color can be any other color (e.g., blue) */
+}
+.social-icon {
+  font-size: 40px; /* Increased size for bigger icons */
+  color: black; /* Set icon color to black */
+  margin: 0 15px; /* Adjust space between icons */
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #0073e6; /* Hover color can be any other color (e.g., blue) */
+}
+.about-container {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #4b0082; /* Indigo or ClubSync brand color */
+}
+
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.about-section p, .about-section ul {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.about-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+/* General Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+/* Homepage Section Styling */
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #F3E5F5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: #E0D3FF;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #9B30FF;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #7F00FF;
+  transform: scale(1.05);
+}
+
+/* About Section */
+.about {
+  background-color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.about h2 {
+  color: #6A0DAD;
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Events Section */
+.events {
+  background-color: #F3E5F5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.events h2 {
+  color: #6A0DAD;
+  margin-bottom: 40px;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.event-card {
+  background-color: #fff;
+  border: 1px solid #D8BFD8;
+  border-radius: 12px;
+  width: 300px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.event-details {
+  padding: 15px;
+  text-align: left;
+}
+
+.event-details h3 {
+  color: #6A0DAD;
+  margin-bottom: 10px;
+}
+
+.event-details p {
+  margin-bottom: 5px;
+}
+
+/* Map Section */
+.map-section {
+  background-color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.map-section h2 {
+  color: #6A0DAD;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.map-container iframe {
+  border: 0;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  height: 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar Button Section */
+.calendar-section {
+  background-color: #F3E5F5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.calendar-section h2 {
+  color: #6A0DAD;
+  margin-bottom: 20px;
+}
+
+.calendar-button {
+  background-color: #9B30FF;
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.calendar-button:hover {
+  background-color: #7F00FF;
+  transform: scale(1.05);
+}
+
+/* Optional Calendar Layout */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.calendar-header {
+  grid-column: span 7;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #6A0DAD;
+  margin-bottom: 10px;
+}
+
+.day-name {
+  font-weight: bold;
+  color: #9B30FF;
+  text-align: center;
+}
+
+.day {
+  height: 80px;
+  background-color: #F3E5F5;
+  border-radius: 8px;
+  text-align: right;
+  padding: 5px;
+  font-size: 0.9rem;
+  color: #333;
+  position: relative;
+}
+
+.day.today {
+  background-color: #D8BFD8;
+  border: 2px solid #6A0DAD;
+}
+
+.day::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #9B30FF;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .events-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card {
+    width: 90%;
+  }
+
+  .map-container iframe {
+    height: 200px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+/* ========== Base Styling Enhancements ========== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #f3e8ff, #f5f3ff);
+  color: #333;
+}
+
+/* ========== Event Cards ========== */
+.event-card {
+  border: 1px solid #d8b4fe;
+  background: linear-gradient(to right, #faf5ff, #fff);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(128, 90, 213, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+.event-card:hover {
+  transform: scale(1.02);
+}
+
+/* ========== Buttons ========== */
+.btn-purple {
+  background: linear-gradient(to right, #8b5cf6, #7c3aed);
+  color: white;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  border: none;
+}
+.btn-purple:hover {
+  background: linear-gradient(to right, #7c3aed, #6d28d9);
+}
+
+.btn-green {
+  background-color: #22c55e;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+.btn-green:hover {
+  background-color: #16a34a;
+}
+
+.btn-red {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+.btn-red:hover {
+  background-color: #dc2626;
+}
+
+/* ========== Form Inputs ========== */
+.input-field {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* ========== Modal Backdrop ========== */
+.modal-overlay {
+  background-color: rgba(31, 41, 55, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* ========== Title Headers ========== */
+.section-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+}
+
+.sub-heading {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 0.75rem;
+}
+
+/* ========== Event Date Badge ========== */
+.date-badge {
+  display: inline-block;
+  background-color: #ede9fe;
+  color: #6d28d9;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  margin-top: 0.5rem;
+}
+
+/* ========== No Events Text ========== */
+.empty-message {
+  font-style: italic;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 2rem;
+}
+.recurse-club-container {
+  margin: 20px;
+}
+
+.recurse-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.event-card {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.event-date {
+  color: #888;
+}
+
+.register-btn,
+.volunteer-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.register-btn:hover,
+.volunteer-btn:hover {
+  background-color: #45a049;
+}
+
+.registered-msg,
+.volunteered-msg {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.register-btn {
+  z-index: 9999;
+  position: relative;
 }
